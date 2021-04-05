@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findById(userId);
 	}
 
-
 	@Override
 	public void registerUser(User user) {
 		userRepository.save(user);
@@ -34,15 +33,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void modifyUser(String userId, User user) {
 		Optional<User> svrUser = userRepository.findById(userId);
-		svrUser.get().getUserName();
-		svrUser.get().getUserNo();
-		svrUser.get().getUserPassword();
+		svrUser.get().setUserName(user.getUserName());
+		svrUser.get().setUserNo(user.getUserNo());
+		svrUser.get().setUserPassword(user.getUserPassword());
 		userRepository.save(svrUser.get());
 	}
 
 	@Override
 	public void deleteUser(String userId) {
 		userRepository.deleteById(userId);;
+	}
+
+	@Override
+	public Optional<User> getAllAccount(String userId) {
+		Optional<User> user = userRepository.findById(userId);
+		//userRepository.getOne(userId)
+		return user;
 	}
 	
 }

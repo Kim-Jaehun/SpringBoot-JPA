@@ -50,4 +50,10 @@ public class UserController {
 		userService.deleteUser(userId);
 	}
 	
+	@GetMapping("/account/{userId}")
+	public Optional<User> getAllAcount(@PathVariable("userId") String userId) {
+		return userService.getAllAccount(userId); 
+	}
+
+	
 }

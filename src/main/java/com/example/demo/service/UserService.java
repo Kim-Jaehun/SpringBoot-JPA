@@ -19,5 +19,7 @@ public interface UserService {
 	void modifyUser(String userId, User user);
 
 	void deleteUser(String userId);
-
+	
+	/*고객의 모든계좌 조회*/
+	Optional<User> getAllAccount(String userId);
 }
